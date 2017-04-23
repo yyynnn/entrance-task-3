@@ -29,11 +29,14 @@
 - После добавим `cacheKey.includes('gifs.html')` к условиям в функции `needStoreForOffline()`, для загрузки страницы из кеша.
 - Потом добавим файлы для кеширования перед установкой в массив `CACHE_MAIN_FILES` и используем массив новой функцией `beforeCacheFiles()`.
 - Далее изменим обработку запросов на строчке 55 в `Service-worker.js`:
-  `    let response;
-          if (needStoreForOffline(cacheKey)) {
+  ```javascript
+  let response;
+       if (needStoreForOffline(cacheKey)) {
               response = fetchAndPutToCache(cacheKey, event.request);
           } else {
               response = fetchWithFallbackToCache(event.request);
           }
           event.respondWith(response);
-  });`
+  });
+  ```
+  
